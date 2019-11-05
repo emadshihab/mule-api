@@ -6,12 +6,12 @@
  */
 package org.mule.runtime.api.scheduler;
 
+import org.mule.api.annotation.NoImplement;
 import org.mule.runtime.api.service.Service;
 
 import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.SynchronousQueue;
-import org.mule.api.annotation.NoImplement;
 
 /**
  * Provides access to the different schedulers and thread pools that exist in the Mule runtime, allowing an artifact to schedule
@@ -202,6 +202,14 @@ public interface SchedulerService extends Service {
    * @return whether {@link Thread#currentThread()} belongs to a ThreadGroup indication that waiting/blocking is allowed.
    */
   default boolean isCurrentThreadForCpuWork(SchedulerPoolsConfigFactory poolsConfigFactory) {
+    return true;
+  }
+
+  default boolean isCurrentThreadRuntimeOwned() {
+    return true;
+  }
+
+  default boolean isCurrentThreadRuntimeOwned(SchedulerPoolsConfigFactory poolsConfigFactory) {
     return true;
   }
 
