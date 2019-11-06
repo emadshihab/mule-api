@@ -209,10 +209,6 @@ public interface SchedulerService extends Service {
     return true;
   }
 
-  default boolean isCurrentThreadRuntimeOwned(SchedulerPoolsConfigFactory poolsConfigFactory) {
-    return true;
-  }
-
   /**
    * Provides a read-only view of all currently active {@link Scheduler}s created through this service.
    *
